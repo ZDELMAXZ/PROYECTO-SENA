@@ -34,7 +34,7 @@ function UserRegisterPage() {
     name: /^[a-zA-ZÁ-ÿ\s]{3,35}$/, 
     lastName: /^[a-zA-ZÁ-ÿ\s]{3,35}$/, 
     numDoc: /^[a-zA-Z0-9]{8,20}$/,
-    email: /^\w+@(misena|soy\.sena)\.edu\.co$/,
+    email: /^\w+(\.\w+)?@(gmail\.com|soy\.sena\.edu\.co)$/, // corregido
     password: /^.{8,20}$/     
   }
   const addData = (name, valor) => {
@@ -220,7 +220,7 @@ function UserRegisterPage() {
                 <div className="group_input">
                   <input
                     type="email" name="email" id="email" className="form_input"
-                    placeholder="correo@misena.edu.co" required
+                    placeholder="correo@gmail.com o correo@soy.sena.edu.co" required // corregido
                   />
                   <i className="bi bi-x-circle-fill icon_validate"></i>
                 </div>

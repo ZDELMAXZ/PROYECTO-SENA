@@ -23,7 +23,7 @@ export const ComponentFormUp = ({ userData }) => {
 
   const expresiones = {
     numDocumento: /^([a-zA-Z]{4}|[0-9]){8,12}$/,
-    email: /^\w+@(misena|soy\.sena)\.edu\.co$/,
+    email: /^[\w.]+@(gmail\.com|soy\.sena\.edu\.co)$/, // corregido
     passNew: /^.{8,20}$/
   }
   const closeModal = () => {
