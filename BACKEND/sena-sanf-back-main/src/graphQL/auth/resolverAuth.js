@@ -5,35 +5,64 @@ const bcrypt = require('bcryptjs');
 
 const resolverAuth = {
   Mutation: {
+    // Registrar usuario
     registerUser: async (root, args) => {
       try {
+        // Verificar si el número de documento o el email ya están registrados
         const findUser = await UserModel.findOne({ Num_Documento: args.Num_Documento });
         const findEmail = await UserModel.findOne({ Email: args.Email });
-        if (findUser) throw boom.conflict(`El Usuario con Cedula ${args.Num_Documento}, Ya se encuentra registrado`);
-        if (findEmail) throw boom.conflict(`El Usuario con el Email ${args.Email}, Ya se encuentra registrado`);
 
+        if (findUser) {
+          throw boom.conflict(`El Usuario con Cedula ${args.Num_Documento}, Ya se encuentra registrado`);
+        }
+        if (findEmail) {
+          throw boom.conflict(`El Usuario con el Email ${args.Email}, Ya se encuentra registrado`);
+        }
+
+        // Asignar 'Active' a true automáticamente al registrar
+        args.Active = true;
+
+        // Encriptar la contraseña
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(args.Password, salt);
         args.Password = hashedPassword;
+
+        // Crear el usuario
         const userRegister = await UserModel.create(args);
+
+        // Generar y devolver el token
         return {
           token: generateToken({
             _id: userRegister._id,
             Active: userRegister.Active
           })
         };
-      } catch (error) { throw boom.conflict(`No se pudo crear el usuario, ${error}`); }
+      } catch (error) {
+        throw boom.conflict(`No se pudo crear el usuario, ${error}`);
+      }
     },
+
+    // Iniciar sesión del usuario
     loginUser: async (root, args) => {
       const findUser = await UserModel.findOne({ Num_Documento: args.Num_Documento });
       if (findUser) {
-        if (!findUser.Active)
+        // Verificar si el usuario está activo
+        if (!findUser.Active) {
           throw boom.conflict('Lo sentimos, su Usuario se encuentra Inactivo, por favor comuniquese con el Administrador');
+        }
+
         const { Num_Documento, Tipo_Documento, Password } = findUser;
+
+        // Verificar que el tipo y número de documento coincidan
         if (Tipo_Documento === args.Tipo_Documento && Num_Documento === args.Num_Documento) {
+          // Comparar las contraseñas
           const valid = await bcrypt.compare(args.Password, Password);
-          if (!valid) throw boom.notFound('Lo sentimos, los Datos ingresados No son validos, Verifiquelos');
-          return { 
+          if (!valid) {
+            throw boom.notFound('Lo sentimos, los Datos ingresados No son validos, Verifiquelos');
+          }
+
+          // Generar y devolver el token
+          return {
             token: generateToken({
               _id: findUser._id,
               Nombre: findUser.Nombre,
@@ -43,16 +72,19 @@ const resolverAuth = {
               Rol: findUser.Rol,
               Active: findUser.Active
             })
-          }
+          };
         }
       } else {
         throw boom.conflict(`Lo sentimos, los Datos ingresados No son validos, Verifiquelos, o Registrese`);
       }
     },
+
+    // Refrescar el token
     refreshToken: async (root, args, context) => {
-      if (!context.currentUser) return { error: 'Token No Valido'};
-      if (!context.currentUser.Active) return { error: 'Usuario no Activo'};
-      return { 
+      if (!context.currentUser) return { error: 'Token No Valido' };
+      if (!context.currentUser.Active) return { error: 'Usuario no Activo' };
+
+      return {
         token: generateToken({
           _id: context.currentUser._id,
           Nombre: context.currentUser.Nombre,
@@ -65,6 +97,6 @@ const resolverAuth = {
       };
     }
   }
-}
+};
 
 module.exports = resolverAuth;
