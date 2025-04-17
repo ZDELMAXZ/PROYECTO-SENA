@@ -12,15 +12,15 @@ const userShema = new Schema({
     Email: {
         type: String, required: true, unique: true, validate: {
             validator: (Email) => {
-                const expreRegular = /^\w+(\.\w+)?@(gmail\.com|soy\.sena\.edu\.co)$/;
+                const expreRegular = /^\w+(\.\w+)?@(soy\.sena\.edu\.co)$/; // Se genero ajuste solo para que funcione el dominio de (Soy.Sena)
                 return expreRegular.test(Email);
             },
-            message: 'Email is not valid, dominio gmail.com o soy.sena.edu.co',
+            message: 'Email is not valid, dominio soy.sena.edu.co',
         },
     },
     Password: { type: String, required: true },
     Rol: { type: String, required: true, enum: ['ADMINISTRADOR', 'INSTRUCTOR', 'FUNCIONARIO'] },
-    Active: { type: Boolean, default: false }
+    Active: { type: Boolean, default: true } // se cambio la activacion false por true
 });
 
 const UserModel = mongoose.model('user', userShema);

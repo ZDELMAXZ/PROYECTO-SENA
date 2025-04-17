@@ -23,7 +23,7 @@ export const ComponentFormUp = ({ userData }) => {
 
   const expresiones = {
     numDocumento: /^([a-zA-Z]{4}|[0-9]){8,12}$/,
-    email: /^[\w.]+@(gmail\.com|soy\.sena\.edu\.co)$/, // corregido
+    email: /^[\w.]+@(soy\.sena\.edu\.co)$/, // corregido para que solo sea dominio (Soy.Sena)
     passNew: /^.{8,20}$/
   }
   const closeModal = () => {
@@ -139,7 +139,7 @@ export const ComponentFormUp = ({ userData }) => {
                   <input type="email" id="email" autoComplete="off" placeholder="correo@soy.sena.edu.co" />
                 </section>
                 <p className="message_error">
-                  El Correo debe ser de dominio sena (misena o soy.sena)
+                  El Correo debe ser de dominio (soy.sena)
                 </p>
               </section>
 

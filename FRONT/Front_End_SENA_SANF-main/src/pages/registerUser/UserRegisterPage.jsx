@@ -34,7 +34,7 @@ function UserRegisterPage() {
     name: /^[a-zA-ZÁ-ÿ\s]{3,35}$/, 
     lastName: /^[a-zA-ZÁ-ÿ\s]{3,35}$/, 
     numDoc: /^[a-zA-Z0-9]{8,20}$/,
-    email: /^\w+(\.\w+)?@(gmail\.com|soy\.sena\.edu\.co)$/, // corregido
+    email: /^\w+(\.\w+)?@(soy\.sena\.edu\.co)$/, // corregido para que solo sea dominio (Soy.Sena)
     password: /^.{8,20}$/     
   }
   const addData = (name, valor) => {
@@ -220,12 +220,12 @@ function UserRegisterPage() {
                 <div className="group_input">
                   <input
                     type="email" name="email" id="email" className="form_input"
-                    placeholder="correo@gmail.com o correo@soy.sena.edu.co" required // corregido
+                    placeholder="correo@soy.sena.edu.co" required // corregido para que el correo ingresado solo sea permitidio el dominio de (Soy.Sena)
                   />
                   <i className="bi bi-x-circle-fill icon_validate"></i>
                 </div>
                 <p className="input_error">
-                  El Correo debe ser de dominio sena (misena o soy.sena)
+                  El Correo debe ser de dominio (soy.sena)
                 </p>
               </section>
 
