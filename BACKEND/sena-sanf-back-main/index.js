@@ -22,7 +22,9 @@ mongoose.connect(dbConfig.dataBase, {
   useUnifiedTopology: true
 })
 .then(() => console.log('Data Base Connected'))
-.catch(err => console.log('Connect Error ', err));
+.catch(err => {console.error('Connect Error', err);
+  process.exit(1); // Termina el proceso si no se puede conectar a la base de datos
+});
 
 const getUserData = token => {
   const verifyToken = validateToken(token);
