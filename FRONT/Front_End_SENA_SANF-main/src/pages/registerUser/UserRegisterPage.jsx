@@ -205,7 +205,7 @@ function UserRegisterPage() {
                 <div className="group_input">
                   <input
                     type="text" name="numDoc" id="numDoc" className="form_input"
-                    placeholder="12345678ABC" autoComplete="off" required
+                    placeholder="Ingrese Número De Documento" autoComplete="off" required
                   />
                   <i className="bi bi-x-circle-fill icon_validate"></i>
                 </div>
@@ -225,7 +225,7 @@ function UserRegisterPage() {
                   <i className="bi bi-x-circle-fill icon_validate"></i>
                 </div>
                 <p className="input_error">
-                  El Correo debe ser de dominio (soy.sena)
+                  El Correo debe ser de dominio (soy.sena )
                 </p>
               </section>
 
