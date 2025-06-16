@@ -240,7 +240,7 @@ function UserRegisterPage() {
                   <i className="bi bi-eye-fill eyePass" onMouseDown={viewPass} onMouseUp={hiddenPass}></i>
                 </div>
                 <p className="input_error">
-                  La contraseña debe tener entre 8 y 20 caracteres
+                La contraseña debe tener entre 8 caracteres, al menos una mayúscula, una minúscula, un número, un símbolo, y no debe contener números secuenciales
                 </p>
               </section>
 

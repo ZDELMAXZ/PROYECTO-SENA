@@ -19,7 +19,7 @@ const resolverAuth = {
         return {
           token: generateToken({
             _id: userRegister._id,
-            Active: userRegister.Active
+            true: userRegister.true
           })
         };
       } catch (error) { throw boom.conflict(`No se pudo crear el usuario, ${error}`); }
@@ -27,8 +27,8 @@ const resolverAuth = {
     loginUser: async (root, args) => {
       const findUser = await UserModel.findOne({ Num_Documento: args.Num_Documento });
       if (findUser) {
-        if (!findUser.Active)
-          throw boom.conflict('Lo sentimos, su Usuario se encuentra Inactivo, por favor comuniquese con el Administrador');
+        if (!findUser.true)
+         throw boom.conflict/*('Lo sentimos, su Usuario se encuentra Inactivo, por favor comuniquese con el Administrador');*/
         const { Num_Documento, Tipo_Documento, Password } = findUser;
         if (Tipo_Documento === args.Tipo_Documento && Num_Documento === args.Num_Documento) {
           const valid = await bcrypt.compare(args.Password, Password);
@@ -41,7 +41,7 @@ const resolverAuth = {
               Num_Documento: findUser.Num_Documento,
               Email: findUser.Email,
               Rol: findUser.Rol,
-              Active: findUser.Active
+              true: findUser.true
             })
           }
         }
@@ -51,7 +51,7 @@ const resolverAuth = {
     },
     refreshToken: async (root, args, context) => {
       if (!context.currentUser) return { error: 'Token No Valido'};
-      if (!context.currentUser.Active) return { error: 'Usuario no Activo'};
+      if (!context.currentUser.true) return { error: 'Usuario no Activo'};
       return { 
         token: generateToken({
           _id: context.currentUser._id,
@@ -60,7 +60,7 @@ const resolverAuth = {
           Num_Documento: context.currentUser.Num_Documento,
           Email: context.currentUser.Email,
           Rol: context.currentUser.Rol,
-          Active: context.currentUser.Active
+          true: context.currentUser.true
         })
       };
     }
