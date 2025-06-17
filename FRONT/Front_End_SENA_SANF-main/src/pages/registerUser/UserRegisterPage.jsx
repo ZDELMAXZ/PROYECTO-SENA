@@ -35,7 +35,7 @@ function UserRegisterPage() {
     lastName: /^[a-zA-ZÁ-ÿ\s]{3,35}$/, 
     numDoc: /^[a-zA-Z0-9]{8,20}$/,
     email: /^\w+(\.\w+)?@(soy\.sena\.edu\.co)$/, // corregido para que solo sea dominio (Soy.Sena)
-    password: /^.{8,20}$/     
+    password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[^\s]{8,20}$/, 
   }
   const addData = (name, valor) => {
     if (name === ('name' || 'lastName')) valor = valor.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase());
