@@ -1,7 +1,7 @@
 {
   "name": "poject-sena-backend",
   "version": "1.0.0",
-  "description": "Proyecto gestion de horarios SENA - SANF",
+  "description": "Proyecto gestion de Actividades Grupo de Formacion SENA - SANF",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",

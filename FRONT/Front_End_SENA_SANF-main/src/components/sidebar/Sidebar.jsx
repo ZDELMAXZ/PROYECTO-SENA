@@ -87,8 +87,8 @@ function Sidebar({ userData }) {
                     <li className="nav_link" id="instructor" onClick={() => select(2)}>
                       <Link to={'/instructor'}>
                         <i className="bi bi-calendar2-date-fill icon"></i>
-                        <span className="text nav_text">Horarios</span>
-                        <span className="hover_span">Ver Horarios</span>
+                        <span className="text nav_text">Actividades</span>
+                        <span className="hover_span">Ver Actividades</span>
                       </Link>
                     </li>
                   ) : (
@@ -96,8 +96,8 @@ function Sidebar({ userData }) {
                       <li className="nav_link" id="hours" onClick={() => select(2)}>
                         <Link to={'/shedule'}>
                           <i className="bi bi-clock-fill icon"></i>
-                          <span className="text nav_text">Géstion Horarios</span>
-                          <span className="hover_span">Géstion Horarios</span>
+                          <span className="text nav_text">Géstion de Actividades</span>
+                          <span className="hover_span">Géstion de Actividades</span>
                         </Link>
                       </li>
                       <li className="nav_link" id="users" onClick={() => select(3)}>

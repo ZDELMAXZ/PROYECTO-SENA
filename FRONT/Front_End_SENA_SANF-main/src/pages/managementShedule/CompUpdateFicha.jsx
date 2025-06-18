@@ -46,7 +46,7 @@ function CompUpdateFicha({ user, setUser, instructor, posShedule }) {
   useEffect(() => {
     if (resultsUpShedule.error) Swal.fire('Error!', `${resultsUpShedule.error.message}`, 'error');
     if (resultsUpShedule.data) {
-      Swal.fire('Almacenado!', 'Los cambios en el Horarios, han sido guardados.', 'success');
+      Swal.fire('Almacenado!', 'Los cambios en las Actividades, han sido guardados.', 'success');
       setUser(resultsUpShedule.data.updateShedule.Horario[posShedule]);
       resultsUpShedule.reset();
     }

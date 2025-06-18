@@ -84,7 +84,7 @@ function ComponentForm({ btnsAction, form, setForm, setTableTitle, colorSelector
     document.querySelector('.btns_table').style.display = 'flex';
     document.querySelector('.table_shedule').style.display = 'grid';
     document.querySelector('.btns_actions').style.display = 'none';
-    setTableTitle(`Asignar Horario a la Ficha : ${e.target.Num_Ficha.value}`);
+    setTableTitle(`Asignar Actividades a la Ficha : ${e.target.Num_Ficha.value}`);
     document.querySelector('.resume').innerHTML += `
       <section>
         <label>Ficha Número ${e.target.Num_Ficha.value} : </label>

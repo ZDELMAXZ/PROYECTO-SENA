@@ -150,7 +150,7 @@ function WelcomeLoginPage() {
             <p>
               Desde el grupo <b>SENA-SANF</b> le damos una calurosa bienvenida a nuestra aplicación web
               en donde podrá de una manera eficaz, ordenada y sencilla, organizar, ver, editar y administrar
-              el manejo de horarios. <br /><br /> Esta aplicación va dirigida a Instructores, Funcionarios y Administradores
+              el manejo de actividades de grupo de formacion. <br /><br /> Esta aplicación va dirigida a Instructores, Funcionarios y Administradores
               <b> SENA</b> del Centro de Materiales y Ensayos del Complejo Sur situado en la ciudad de Bogotá D.C.
             </p>
           </div>
@@ -167,7 +167,7 @@ function WelcomeLoginPage() {
               <h2>¿ No tienes una cuenta ?</h2>
               <p>
                 Registrate para poder acceder a todos nuestros servicios, y administra y
-                visualiza los horarios en un solo lugar.
+                visualiza las actividades en un solo lugar.
               </p>
               <div className="divBtn">
                 <Link to={'/user-register'}><button>Registrate !! <i className="bi bi-caret-right-fill"></i></button></Link>

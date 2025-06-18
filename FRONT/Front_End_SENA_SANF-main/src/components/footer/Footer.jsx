@@ -12,7 +12,7 @@ function Footer() {
             <div className="text">
                 <h1>SGAH</h1>
                 <h3>Sistema de Gestion y</h3>
-                <h5>Administracion de Horarios</h5>
+                <h5>Administracion de Actividades</h5>
             </div>
         </section>
         <section className="social_media">

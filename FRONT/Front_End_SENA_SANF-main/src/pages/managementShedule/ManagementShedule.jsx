@@ -107,10 +107,10 @@ function ManagementShedule() {
 
   useEffect(() => {
     if (resultsAddShedule.error) Swal.fire('Error!', `${resultsAddShedule.error.message}`, 'error');
-    if (resultsAddShedule.data) Swal.fire('Almacenado!', 'El Horario ha sido creado.', 'success');
+    if (resultsAddShedule.data) Swal.fire('Almacenado!', 'La Actividad ha sido creada.', 'success');
     if (resultsUpShedule.error) Swal.fire('Error!', `${resultsUpShedule.error.message}`, 'error');
     if (resultsUpShedule.data) {
-      Swal.fire('Almacenado!', 'Los cambios en el Horarios, han sido guardados.', 'success');
+      Swal.fire('Almacenado!', 'Los cambios en la Actividad, han sido guardados.', 'success');
       resultsUpShedule.reset(); 
     }
   }, [resultsAddShedule, resultsUpShedule]);
@@ -206,7 +206,7 @@ function ManagementShedule() {
   const createShedule = () => {
     document.querySelector('.btns_options').style.display = 'none';
     document.querySelector('.type_contrato').style.display = 'flex';
-    setTitleCreateShed('Crear Horarios');
+    setTitleCreateShed('Crear Actividades');
   }
   const typeContrato = typeCont => {
     cantHours = 42;
@@ -365,7 +365,7 @@ function ManagementShedule() {
       if (userSelected.Horario.some(({ FechaInicio }) => FechaInicio === date_start.value)) {
         date_start.focus();
         Swal.fire('Atencion!', 
-          `El Instructor ${userSelected.Instructor.Apellido} Ya tiene asignado un horario para esa fecha`, 'info');
+          `El Instructor ${userSelected.Instructor.Apellido} Ya tiene asignado una actividad para esa fecha`, 'info');
         return false;
       }
     }
@@ -455,7 +455,7 @@ function ManagementShedule() {
         document.querySelector('.create_shedule').style.display = 'block';
         document.querySelector('.btn_add_ficha').style.display = 'flex';
         document.querySelector('article.dates').style.display = 'none';
-        setTitleCreateShed('Completar Horario');
+        setTitleCreateShed('Completar Actividad');
         date_start = user.FechaInicio;
         date_end = user.FechaFin;
         setCompleteFicha(true);
@@ -467,7 +467,7 @@ function ManagementShedule() {
         setColorSelector(valorNew);
       }
 
-      setTableTitle(`Horario Asignado : ${user.Horas.length} Horas`);
+      setTableTitle(`Actividad Asignada : ${user.Horas.length} Horas`);
       document.querySelector('.table_shedule').style.display = 'grid';
       document.querySelector('.show_hours').style.display = 'block';
       clearTable();
@@ -492,7 +492,7 @@ function ManagementShedule() {
       <section className="container">
         <header>
           <section className="title">
-            <h1><i className="bi bi-clock-history icons"></i>Gestión de Horarios</h1>
+            <h1><i className="bi bi-clock-history icons"></i>Gestión de Actividades de Grupo de Formacion.</h1>
           </section>
           <section className="logos">
             <img className="logos_head" src={senaLogo} alt="SENA" />
@@ -545,7 +545,7 @@ function ManagementShedule() {
               </article>
               <article>
                 <button onClick={btnFilter}>
-                  Horarios Asignados / Sin Asignar / Todos
+                  Actividades Asignadas / Sin Asignar / Todos
                 </button>
               </article>
             </section>
@@ -558,9 +558,9 @@ function ManagementShedule() {
             <section className="btns_options">
               <h2>¿ Que desea Hacer ?</h2>
               <article>
-                <button onClick={viewShedule}>Ver Horarios</button>
-                <button onClick={createShedule}>Crear Horarios</button>
-                <button onClick={updateShedule}>Modificar Horario</button>
+                <button onClick={viewShedule}>Ver Actividades</button>
+                <button onClick={createShedule}>Crear Actividades</button>
+                <button onClick={updateShedule}>Modificar Actividades</button>
               </article>
             </section>
 

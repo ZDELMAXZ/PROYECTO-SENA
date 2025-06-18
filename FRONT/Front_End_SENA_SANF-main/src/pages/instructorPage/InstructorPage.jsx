@@ -47,7 +47,7 @@ function InstructorPage({ userData }) {
     if (error) {
       if (userData.Rol !== 'INSTRUCTOR') 
         Swal.fire('Error!', `Lo Sentimos, pero Usted No esta Autorizado para Acceder a esta Pagina`, 'error');
-      else Swal.fire('Atencion!', `Usted, Aun No tiene Horarios Asignados, Comuniquese con el Administrador`, 'info');
+      else Swal.fire('Atencion!', `Usted, Aun No tiene Actividades Asignadas, Comuniquese con el Administrador`, 'info');
       navigate('/greeting')
     } 
   }, [data, error]);

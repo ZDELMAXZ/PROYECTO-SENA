@@ -29,7 +29,7 @@ const resolverShedule = {
         const query = { Instructor: args.Instructor };
         const shedule = await SheduleModel.findOne(query).populate('Instructor');
         if (shedule) return shedule;
-        throw boom.notFound(`El Instructor ${args.Instructor} No Tiene horarios Asignados`);
+        throw boom.notFound(`El Instructor ${args.Instructor} No Tiene Actividades Asignadas`);
       } else throw boom.unauthorized('User Not Authenticated');
     }
   },
@@ -41,7 +41,7 @@ const resolverShedule = {
           const sheduleCreate = await SheduleModel.create(args);
           return sheduleCreate;
         } catch(error) {
-          throw boom.notFound(`No se pudo crear el Horario, Error: ${error}`);
+          throw boom.notFound(`No se pudo crear la actividad, Error: ${error}`);
         }
       } else throw boom.unauthorized('User Not Authenticated');
     },

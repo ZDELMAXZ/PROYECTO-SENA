@@ -9,7 +9,7 @@ function CompShowShedule({ userSelected, sizeShed, setSizeShed, setTableTitle, c
     let color = 0;
 
     useEffect(() => {
-      setTableTitle(`Horario Asignado : ${dataShedule.Horas.length} Horas`);
+      setTableTitle(`Actividad Asignada : ${dataShedule.Horas.length} Horas`);
       dataShedule.Ficha.map(({ Competencias, Resultados }, pos) => {
         changeAreaCompt(Competencias, pos);
         changeAreaResults(Resultados, pos); 
@@ -61,7 +61,7 @@ function CompShowShedule({ userSelected, sizeShed, setSizeShed, setTableTitle, c
 
     return (
       <>
-        <h2 className='title_shedule'>HORARIOS</h2>
+        <h2 className='title_shedule'>ACTIVIDADES</h2>
         <section className="dates_range">
           <i onClick={() => changeData(0)} className="bi bi-caret-left-fill icons_change_date"></i>
           <span>{formatDate(dataShedule.FechaInicio)}</span> A
@@ -129,7 +129,7 @@ function CompShowShedule({ userSelected, sizeShed, setSizeShed, setTableTitle, c
   } else {
     if (userSelected?.Horario) {
       const nameInst = `${userSelected.Instructor.Nombre} ${userSelected.Instructor.Apellido}`;
-      return <h3>El Instructor {nameInst} Aun No tiene Horarios Asignados </h3>
+      return <h3>El Instructor {nameInst} Aun No tiene Actividades Asignadas </h3>
     }
   } 
 }
